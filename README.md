@@ -3,9 +3,9 @@ A place to share why you're drinking what you're drinking...
 
 ## Goals
 * Create a simple web application where people can share why they are drinking.
-* Practice making web applications and using backbone js.
-* Speed hacking practice for hackathons
+* Experiment with using Redis, specifically with Tornado
+* General hacking practice
 
 ## Technologies
+* Tornado (as web server
 * Redis (as a data store)
-* Tornado (as web server)
