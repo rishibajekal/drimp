@@ -5,7 +5,6 @@ import tornado.ioloop
 import tornado.web
 from tornado.options import options, define
 from handlers.index import *
-from handlers.ws import *
 
 define("port", default=8888, help="run on the given port", type=int)
 define("debug", default=True, help="run tornado in debug mode", type=bool)
