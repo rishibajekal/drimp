@@ -15,15 +15,15 @@ class Application(tornado.web.Application):
     def __init__(self):
 
         handlers = [
-            tornado.web.URLSpec(r'/websocket', WSHandler),
-            tornado.web.URLSpec(r'.*', IndexHandler)
+            tornado.web.URLSpec(r'/', IndexHandler),
+            tornado.web.URLSpec(r'/index', IndexHandler),
         ]
 
         current_dir = os.path.dirname(__file__)
 
         settings = dict(
-            template_path=os.path.join(current_dir, 'ui'),
-            static_path=os.path.join(current_dir, 'ui'),
+            template_path=os.path.join(current_dir, 'templates'),
+            static_path=os.path.join(current_dir, 'static'),
             debug=options.debug,
             autoescape='xhtml_escape'
         )
