@@ -5,6 +5,7 @@ import tornado.ioloop
 import tornado.web
 from tornado.options import options, define
 from handlers.index import *
+from handlers.toaster import *
 
 define("port", default=8888, help="run on the given port", type=int)
 define("debug", default=True, help="run tornado in debug mode", type=bool)
@@ -16,6 +17,7 @@ class Application(tornado.web.Application):
         handlers = [
             tornado.web.URLSpec(r'/', IndexHandler),
             tornado.web.URLSpec(r'/index', IndexHandler),
+            tornado.web.URLSpec(r'/toast/([0-9]+)', Toaster)
         ]
 
         current_dir = os.path.dirname(__file__)
