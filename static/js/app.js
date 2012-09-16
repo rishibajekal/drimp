@@ -7,14 +7,17 @@ function sendToast(event){
     message = $('#message').val();
     drink = $('#drink').val();
     timestamp = event.timeStamp;
+    id = '';
     $.ajax({
         url: location.protocol + '//' + location.host + '/toast',
         type: 'POST',
         data: '{"message": "' + message + '", "drink": "' + drink + '", "timestamp": "' + timestamp + '"}',
-        dataType: 'json'
+        dataType: 'json',
+        success: function(idvalue){
+            id = idvalue.id;
+        }
     });
 
-    var id = 'myid';
     displayToast(message, drink, timestamp, id);
     clearToast();
 }
