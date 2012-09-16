@@ -1,27 +1,28 @@
 from tornado.web import RequestHandler, asynchronous
 from tornado.gen import Task, engine
 import tornadoredis
-import pickle
 import simplejson as json
 
 redis = tornadoredis.Client()
 redis.connect()
 
+toast_num = 0
+
 
 class Toaster(RequestHandler):
 
-    toast_num = 0
-
     @asynchronous
     @engine
-    def post(self, new_toast):
-        toast = pickle.loads(new_toast)
+    def post(self):
+        global toast_num
+        new_toast = self.request.body
+        toast = json.loads(new_toast)
 
-        self.toast_num += 1
-        id = self.toast_num
-        message = toast.message
-        drink = toast.drink
-        timestamp = toast.timestamp
+        toast_num += 1
+        id = 'id' + str(toast_num)
+        message = toast['message']
+        drink = toast['drink']
+        timestamp = toast['timestamp']
 
         toast_dict = {"message": message, "drink": drink, "timestamp": timestamp}
 
