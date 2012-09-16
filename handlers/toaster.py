@@ -12,7 +12,7 @@ class Toaster(RequestHandler):
 
     def post(self, message, drink, timestamp):
         # store the information into redis
-
+        print "hello"
         # return whether the post was sucessful or not
 
     @asynchronous
