@@ -4,21 +4,32 @@ import tornadoredis
 import pickle
 import simplejson as json
 
-c = tornadoredis.Client()
-c.connect()
+redis = tornadoredis.Client()
+redis.connect()
 
 
 class Toaster(RequestHandler):
 
-    def post(self, message, drink, timestamp):
-        # store the information into redis
-        print "hello"
-        # return whether the post was sucessful or not
+    toast_num = 0
+
+    @asynchronous
+    @engine
+    def post(self, new_toast):
+        toast = pickle.loads(new_toast)
+
+        self.toast_num += 1
+        id = self.toast_num
+        message = toast.message
+        drink = toast.drink
+        timestamp = toast.timestamp
+
+        toast_dict = {"message": message, "drink": drink, "timestamp": timestamp}
+
+        yield Task(redis.hmset, id, toast_dict)
 
     @asynchronous
     @engine
     def get(self, id):
-        response = yield Task(c.get, id)
-        toast = pickle.loads(response)
+        toast = yield Task(redis.hgetall, id)
         self.set_header("Content-Type", "application/json")
         self.write(json.dumps(toast))

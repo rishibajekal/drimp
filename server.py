@@ -17,7 +17,7 @@ class Application(tornado.web.Application):
         handlers = [
             tornado.web.URLSpec(r'/', IndexHandler),
             tornado.web.URLSpec(r'/index', IndexHandler),
-            tornado.web.URLSpec(r'/toast/([0-9]+)', Toaster)
+            tornado.web.URLSpec(r'/toast/([0-9]*)', Toaster)
         ]
 
         current_dir = os.path.dirname(__file__)
