@@ -7,7 +7,7 @@
 ws = new WebSocket('ws://' + location.host + '/websocket');
 
 ws.onopen = function() {
-    $.getJSON(location.protocol + '//' + location.host + '/get/more_toast', function(data) {
+    $.getJSON(location.protocol + '//' + location.host + '/toast', function(data) {
         var json_data = data['data'];
 
         var length = json_data['num_toasts'];
@@ -15,7 +15,6 @@ ws.onopen = function() {
 
         for(var i = 0; i < length; i++) {
             toast = toasts['id' + (i + 1)];
-            console.log(toast);
             displayToast(toast.message, toast.drink, toast.timestamp);
         }
     });
@@ -36,7 +35,7 @@ function sendToast(event) {
     var timestamp = event.timeStamp;
     var toast = '{"message": "' + message + '", "drink": "' + drink + '", "timestamp": "' + timestamp + '"}';
     $.ajax({
-        url: location.protocol + '//' + location.host + '/post/toast',
+        url: location.protocol + '//' + location.host + '/toast',
         dataType: 'json',
         type: 'POST',
         data: toast
