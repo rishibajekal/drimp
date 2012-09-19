@@ -32,7 +32,7 @@ ws.onmessage = function(event) {
 function sendToast(event) {
     var message = $('#message').val();
     var drink = $('#drink').val();
-    var timestamp = event.timeStamp;
+    var timestamp = new Date().toISOString();
     var toast = '{"message": "' + message + '", "drink": "' + drink + '", "timestamp": "' + timestamp + '"}';
     $.ajax({
         url: location.protocol + '//' + location.host + '/toast',
@@ -53,10 +53,10 @@ function clearToast() {
 
 //displayToast function -- add the toast to the html page
 function displayToast(message, drink, timestamp) {
-    $('#toastBox').prepend('<p>' + message + '</p><p>' + drink + '</p><p></p>');
+    $('#toastBox').prepend('<p>' + message + '</p><p>' + drink + '</p><p>' + $.timeago(timestamp) + '</p>');
 }
 
 //next part passes bind the button click to the sendToast
 $('#toastButton').click(function() {
         sendToast(event);
-    });
+});
