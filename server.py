@@ -3,7 +3,7 @@ import logging
 import tornado.httpserver
 import tornado.ioloop
 import tornado.web
-import tornadoredis
+import asyncmongo
 from tornado.options import options, define
 from handlers.index import *
 from handlers.toaster import *
@@ -18,8 +18,7 @@ class Application(tornado.web.Application):
 
         self.toast_num = 0
 
-        self.redis = tornadoredis.Client()
-        self.redis.connect()
+        self.db = asyncmongo.Client(pool_id='drimp', host='127.0.0.1', port=27017, dbname='drimp')
 
         handlers = [
             tornado.web.URLSpec(r'/', IndexHandler),

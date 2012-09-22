@@ -1,47 +1,38 @@
 from tornado.web import RequestHandler, asynchronous
-from tornado.gen import Task, engine
 import simplejson as json
 
 
 class Toaster(RequestHandler):
 
     @asynchronous
-    @engine
     def post(self):
         new_toast = self.request.body
         toast = json.loads(new_toast)
-
+        id = self.application.toast_num
         self.application.toast_num += 1
-        id = 'id' + str(self.application.toast_num)
         message = toast['message']
         drink = toast['drink']
         timestamp = toast['timestamp']
 
         toast_dict = {"message": message, "drink": drink, "timestamp": timestamp}
-        yield Task(self.application.redis.hmset, id, toast_dict)
+        self.application.db.toasts.insert({'_id': id, 'data': toast_dict}, callback=self._post_callback)
 
+    @asynchronous
+    def get(self, toast_id=None):
+        if toast_id is not None:
+            id = int(toast_id)
+            self.application.db.toasts.find_one({'_id': id}, callback=self._get_callback)
+        else:
+            self.application.db.toasts.find(sort=[('_id', 1)], callback=self._get_callback)
+
+    def _post_callback(self, response, error):
         self.finish()
 
     @asynchronous
-    @engine
-    def get(self, toast_id=None):
-
-        if toast_id is not None:
-            toast = yield Task(self.application.redis.hgetall, {"id": "id" + str(toast_id)})
-            self.set_header("Content-Type", "application/json")
-            self.write(json.dumps(toast))
-
-        else:
-            toast_num = self.application.toast_num
-            toast_dict = {}
-
-            for i in xrange(1, toast_num + 1):
-                id = "id" + str(i)
-                toast = yield Task(self.application.redis.hgetall, id)
-                toast_dict[id] = toast
-
-            self.set_header("Content-Type", "application/json")
-            self.write(json.dumps({"type": "init",
-                                   "data": {"num_toasts": toast_num, "toasts": toast_dict}
-                                   }))
+    def _get_callback(self, response, error):
+        self.set_header("Content-Type", "application/json")
+        toasts_dict = {}
+        for entry in response:
+            toasts_dict[entry['_id']] = entry['data']
+        self.write(json.dumps(toasts_dict))
         self.finish()
