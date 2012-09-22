@@ -1,4 +1,5 @@
+asyncmongo==1.2.1
+pymongo==2.3
 simplejson==2.6.1
 tornado==2.4
-tornado-redis==0.0.7
 wsgiref==0.1.2

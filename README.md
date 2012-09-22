@@ -3,9 +3,9 @@ A place to share why you're drinking what you're drinking...
 
 ## Goals
 * Create a simple web application where people can share why they are drinking.
-* Experiment with using Redis, specifically with Tornado
+* Experiment with using MongoDB, specifically with Tornado
 * General hacking practice
 
 ## Technologies
 * Tornado (as web server
-* Redis (as a data store)
+* MongoDB (as a data store)
