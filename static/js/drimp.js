@@ -47,7 +47,7 @@ function clearToast() {
 
 //displayToast function -- add the toast to the html page
 function displayToast(message, drink, timestamp) {
-    $('#toastBox').prepend('<p>' + message + '</p><p>' + drink + '</p><p>' + $.timeago(timestamp) + '</p>');
+    $('#toastBox').prepend('<div class="well well-large"><p="lead">' + message + '</p><p="lead">' + drink + '</p><p class="pull-right">' + $.timeago(timestamp) + '</p></div>');
 }
 
 //next part passes bind the button click to the sendToast

@@ -14,7 +14,7 @@ class Toaster(RequestHandler):
         drink = toast['drink']
         timestamp = toast['timestamp']
 
-        toast_dict = {"message": message, "drink": drink, "timestamp": timestamp}
+        toast_dict = {"message": message, "drink": drink, "timestamp": timestamp, "comments": {}}
         self.application.db.toasts.insert({'_id': id, 'data': toast_dict}, callback=self._post_callback)
 
     @asynchronous
