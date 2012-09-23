@@ -1,25 +1,3 @@
-/**
-*
-* app.js
-*
-*/
-
-ws = new WebSocket('ws://' + location.host + '/websocket');
-
-ws.onopen = function() {
-    $.getJSON(location.protocol + '//' + location.host + '/toast', function(data) {
-        $.each(data, function(key, value){
-            displayToast(value.message, value.drink, value.timestamp);
-        });
-    });
-};
-
-ws.onmessage = function(event) {
-    var data = $.parseJSON(event.data);
-    displayToast(data.message, data.drink, data.timestamp);
-
-};
-
 //sendToast function -- sends the information to the server via AJAX
 function sendToast(event) {
     var message = $('#message').val();
@@ -46,7 +24,7 @@ function clearToast() {
 //displayToast function -- add the toast to the html page
 function displayToast(message, drink, timestamp) {
     console.log(timestamp);
-    $('#toastBox').prepend('<div class="well well-large"><p="lead">' + message + '</p><p="lead">' + drink + '</p><time class="timeago pull-right" datetime="' + timestamp + '"></time></div>');
+    $('#toastBox').prepend('<div class="well well-large outshade"><p>' + message + '</p><p>' + drink + '</p><time class="timeago muted pull-right" datetime="' + timestamp + '"></time></div>');
     $("time.timeago").timeago();
 }
 
