@@ -1,8 +1,3 @@
-/**
-*
-* time.js
-*
-*/
 
 $(document).ready(function(){
     setInterval(function(){

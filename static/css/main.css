@@ -11,6 +11,43 @@ body {
     padding-bottom: 40px;
 }
 
+.text1 {
+    width: 80%;
+    color:#666;
+    font-size:14px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    margin:5px 0 10px 0;
+    padding:10px;
+    border:#999 1px solid;
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    transition: all 0.25s ease-in-out;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 0);
+    -moz-box-shadow: 0 0 5px rgba(81, 203, 238, 0);
+    box-shadow: 0 0 5px rgba(81, 203, 238, 0);
+    background: rgb(255,255,255); /* Fallback */
+    background: rgba(255,255,255,0.8);
+}
+
+
+.text1:focus{
+    color:#000;
+    outline:none;
+    border:white 3px solid;
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    -webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    -moz-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    background: rgb(255,255,255); /* Fallback */
+    background: rgba(255,255,255,1);
+}
+
+
 
 
 

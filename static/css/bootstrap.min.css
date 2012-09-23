@@ -818,7 +818,11 @@ a.label:hover,a.badge:hover{color:#ffffff;text-decoration:none;cursor:pointer;}
 .carousel-caption h4,.carousel-caption p{color:#ffffff;line-height:20px;}
 .carousel-caption h4{margin:0 0 5px;}
 .carousel-caption p{margin-bottom:0;}
-.hero-unit{padding:60px;margin-bottom:30px;background-color:#3cb9c6;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;}.hero-unit h1{margin-bottom:0;font-size:60px;line-height:1;color:inherit;letter-spacing:-1px;}
+.hero-unit{padding:60px;margin-bottom:30px;
+    background-image: url('http://fc05.deviantart.net/fs41/f/2009/054/c/a/__D_r_i_n_k_U_p___by_MoscaDeMantequilla.png');
+    background-repeat: no-repeat;
+    background-size: 30% 
+    -webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;}.hero-unit h1{margin-bottom:0;font-size:60px;line-height:1;color:inherit;letter-spacing:-1px;}
 .hero-unit p{font-size:18px;font-weight:200;line-height:30px;color:inherit;}
 .pull-right{float:right;}
 .pull-left{float:left;}
