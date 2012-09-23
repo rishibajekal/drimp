@@ -1,7 +1,7 @@
 //sendToast function -- sends the information to the server via AJAX
 function sendToast(event) {
-    var message = $('#message').val();
-    var drink = $('#drink').val();
+    var message = $('#why').val();
+    var drink = $('#what').val();
     var timestamp = new Date().toISOString();
     var toast = '{"message": "' + message + '", "drink": "' + drink + '", "timestamp": "' + timestamp + '"}';
     $.ajax({
@@ -17,8 +17,8 @@ function sendToast(event) {
 
 //clearToast function -- clears the form (call when commit was successful)
 function clearToast() {
-    $('#message').val('');
-    $('#drink').val('');
+    $('#why').val('');
+    $('#what').val('');
 }
 
 //displayToast function -- add the toast to the html page
