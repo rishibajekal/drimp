@@ -9,6 +9,10 @@
 body {
     padding-top: 60px;
     padding-bottom: 40px;
+    background-image: url('../img/bg1.png'); /* Url = 'http://fc05.deviantart.net/fs41/f/2009/054/c/a/__D_r_i_n_k_U_p___by_MoscaDeMantequilla.png'*/
+    background-repeat: no-repeat;
+    background-size: 110%;
+    background-attachment: fixed;
 }
 
 .text1 {

@@ -4,14 +4,16 @@ function sendToast(event) {
     var drink = $('#what').val();
     var timestamp = new Date().toISOString();
     var toast = '{"message": "' + message + '", "drink": "' + drink + '", "timestamp": "' + timestamp + '"}';
-    $.ajax({
-        url: location.protocol + '//' + location.host + '/toast',
-        dataType: 'json',
-        type: 'POST',
-        data: toast
-    });
-    ws.send(toast);
-    clearToast();
+    if (message !== '' && drink !== ''){
+        $.ajax({
+            url: location.protocol + '//' + location.host + '/toast',
+            dataType: 'json',
+            type: 'POST',
+            data: toast
+        });
+        ws.send(toast);
+        clearToast();
+    }
 
 }
 
@@ -24,7 +26,7 @@ function clearToast() {
 //displayToast function -- add the toast to the html page
 function displayToast(message, drink, timestamp) {
     console.log(timestamp);
-    $('#toastBox').prepend('<div class="well well-large outshade"><p>' + message + '</p><p>' + drink + '</p><time class="timeago muted pull-right" datetime="' + timestamp + '"></time></div>');
+    $('#toastBox').prepend('<div class="well well-large"><p>' + message + '</p><p>' + drink + '</p><time class="timeago muted pull-right" datetime="' + timestamp + '"></time></div>');
     $("time.timeago").timeago();
 }
 
