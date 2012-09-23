@@ -16,7 +16,8 @@ define("debug", default=True, help="run tornado in debug mode", type=bool)
 class Application(tornado.web.Application):
     def __init__(self):
 
-        self.db = pymongo.connection.Connection().drimp
+        conn = pymongo.connection.Connection()
+        self.db = conn['drimp']
 
         handlers = [
             tornado.web.URLSpec(r'/', IndexHandler),
