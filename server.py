@@ -3,7 +3,7 @@ import logging
 import tornado.httpserver
 import tornado.ioloop
 import tornado.web
-import asyncmongo
+import pymongo
 from tornado.options import options, define
 from handlers.index import *
 from handlers.toaster import *
@@ -16,9 +16,7 @@ define("debug", default=True, help="run tornado in debug mode", type=bool)
 class Application(tornado.web.Application):
     def __init__(self):
 
-        self.toast_num = 0
-
-        self.db = asyncmongo.Client(pool_id='drimp', host='127.0.0.1', port=27017, dbname='drimp')
+        self.db = pymongo.connection.Connection().drimp
 
         handlers = [
             tornado.web.URLSpec(r'/', IndexHandler),
