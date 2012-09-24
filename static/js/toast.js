@@ -31,6 +31,15 @@ function displayToast(message, drink, timestamp) {
 }
 
 //next part passes bind the button click to the sendToast
-$('#toastButton').click(function() {
+$('#toastButton').bind('click', function(event) {
         sendToast(event);
+
+    /*
+        var $anchor = $(this);
+
+        $('html, body').stop().animate({
+            scrollTop: $('#toastBox').offset().top
+        }, 1000);
+        event.preventDefault();
+    */
 });
