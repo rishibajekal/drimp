@@ -7,8 +7,6 @@
    Author's custom styles
    ========================================================================== */
 body {
-    padding-top: 60px;
-    padding-bottom: 40px;
     background: url('../img/bg1.png') no-repeat center center fixed; /* Url = 'http://fc05.deviantart.net/fs41/f/2009/054/c/a/__D_r_i_n_k_U_p___by_MoscaDeMantequilla.png'*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -16,7 +14,7 @@ body {
     background-size: cover;
 }
 
-.text1 {
+.input-text {
     width: 80%;
     color:#666;
     font-size:14px;
@@ -40,7 +38,7 @@ body {
 }
 
 
-.text1:focus{
+.input-text:focus{
     color:#000;
     outline:none;
     border:white 3px solid;
@@ -51,20 +49,3 @@ body {
     background: rgb(255,255,255); /* Fallback */
     background: rgba(255,255,255,1);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

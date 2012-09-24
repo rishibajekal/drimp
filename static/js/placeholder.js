@@ -1,4 +1,7 @@
-
+/**
+* placeholder
+*   - replaces placeholder text of form with various messages on each page load
+*/
 $(document).ready(function(){
     var whylist = ["I subsist by feeding on the life essence of living creatures, regardless of whether they are undead or a living person/being.",
                 "I am thirsty.",

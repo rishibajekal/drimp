@@ -1,4 +1,7 @@
-
+/**
+* ws
+* 	- handles the WebSocket portion of the application on the client side
+*/
 ws = new WebSocket('ws://' + location.host + '/websocket');
 
 ws.onopen = function() {

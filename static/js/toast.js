@@ -1,4 +1,7 @@
-//sendToast function -- sends the information to the server via AJAX
+/**
+* sendToast
+*   - sends the information to the server via AJAX
+*/
 function sendToast(event) {
     var message = $('#why').val();
     var drink = $('#what').val();
@@ -12,25 +15,29 @@ function sendToast(event) {
             data: toast
         });
         ws.send(toast);
-        clearToast();
+        clearForm();
     }
-
 }
 
-//clearToast function -- clears the form (call when commit was successful)
-function clearToast() {
+/**
+* clearToast
+*   - clears the form upon successful submit
+*/
+function clearForm() {
     $('#why').val('');
     $('#what').val('');
 }
 
-//displayToast function -- add the toast to the html page
+/**
+* displayToast
+*   - add the toast to the page
+*/
 function displayToast(message, drink, timestamp) {
     console.log(timestamp);
     $('#toastBox').prepend('<div class="well well-large"><p>' + message + '</p><p>' + drink + '</p><time class="timeago muted pull-right" datetime="' + timestamp + '"></time></div>');
     $("time.timeago").timeago();
 }
 
-//next part passes bind the button click to the sendToast
 $('#toastButton').bind('click', function(event) {
         sendToast(event);
 
