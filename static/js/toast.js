@@ -17,6 +17,9 @@ function sendToast(event) {
         ws.send(toast);
         clearForm();
     }
+    else {
+        //print that the user needs to fill in both boxed
+    }
 }
 
 /**
@@ -34,13 +37,13 @@ function clearForm() {
 */
 function displayToast(message, drink, timestamp) {
     console.log(timestamp);
-    $('#toastBox').prepend('<div class="well well-large"><p>' + message + '</p><p>' + drink + '</p><time class="timeago muted pull-right" datetime="' + timestamp + '"></time></div>');
+    $('#toastBox').prepend('<div class="well well-large"><time class="timeago muted pull-right" datetime="' + timestamp + '"></time><p>I am drinking because ' + message + '</p><p>I am drinking ' + drink + '</p></div>');
     $("time.timeago").timeago();
 }
 
 $('#toastButton').bind('click', function(event) {
+    console.log(event);
         sendToast(event);
-
     /*
         var $anchor = $(this);
 
@@ -50,3 +53,13 @@ $('#toastButton').bind('click', function(event) {
         event.preventDefault();
     */
 });
+
+// Allow enter to also do the submit
+$('#what').keypress(function(event){
+    if (event.keyCode == 13){
+        event.preventDefault();
+        sendToast();
+    }
+});
+
+    

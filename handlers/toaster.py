@@ -11,6 +11,7 @@ class Toaster(RequestHandler):
 
         new_toast = self.request.body
         toast = json.loads(new_toast)
+        print toast
         id = 0
         results = db_metadata.find_one({'_id': 'toast_num'})
         if results is None:

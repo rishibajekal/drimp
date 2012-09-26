@@ -5,7 +5,7 @@ import tornado.ioloop
 import tornado.web
 import pymongo
 from tornado.options import options, define
-from handlers.index import *
+from handlers.pages import *
 from handlers.toaster import *
 from handlers.ws import *
 
@@ -22,6 +22,8 @@ class Application(tornado.web.Application):
         handlers = [
             tornado.web.URLSpec(r'/', IndexHandler),
             tornado.web.URLSpec(r'/index', IndexHandler),
+            tornado.web.URLSpec(r'/about', AboutHandler),
+            tornado.web.URLSpec(r'/contact', ContactHandler),
             tornado.web.URLSpec(r'/toast', Toaster),
             tornado.web.URLSpec(r'/toast/([0-9]*)', Toaster),
             tornado.web.URLSpec(r'/websocket', WSHandler)
