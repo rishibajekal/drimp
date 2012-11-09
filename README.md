@@ -7,5 +7,6 @@ A place to share why you're drinking what you're drinking...
 * General hacking practice
 
 ## Technologies
-* Tornado (as web server
-* MongoDB (as a data store)
+* Tornado Web Server
+* MongoDB
+* jQuery
