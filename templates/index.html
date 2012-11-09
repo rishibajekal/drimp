@@ -1,87 +1,46 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>drimp</title>
-    <meta name="description" content="A place to share why you drink what you drink...">
-    <meta name="viewport" content="width=device-width">
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="../static/css/main.css">
-    <script src="../static/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-
-	<!--[if IE]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
-</head>
-
-<body>
-    <div class="navbar navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="/">drimp</a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="about">About</a></li>
-                        <li><a href="contact">Contact</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
+{% block navbar %}
+    <ul class="nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="about">About</a></li>
+        <li><a href="contact">Contact</a></li>
+    </ul>            
+{% end %}
+                
+{% block content %}
+    <div class="hero-unit">
+        <h1>Make a toast!</h1>
+        <p>Share why you're drinking and what you're drinking!</p>
+        <div class="form-horizontal" id="toastForm">
+            <div class="control-group">
+                <label class="control-label">I am drinking because:</label>
+                <div class="controls">
+                    <textarea id="why" class="input-text" rows="3" name="message" placeholder="I like to drink."></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label">I am drinking:</label>
+                <div class="controls">
+                    <textarea id="what" class="input-text" rows="1" type="text" name="drink" placeholder="beer"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <p><button class="btn btn-primary btn-large button" id="toastButton">Toast!</button></p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container">
 
-        <div class="hero-unit">
-            <h1>Make a toast!</h1>
-            <p>Share why you're drinking and what you're drinking!</p>
-            <div class="form-horizontal" id="toastForm">
-                <div class="control-group">
-                    <label class="control-label">I am drinking because:</label>
-                    <div class="controls">
-                        <textarea id="why" class="input-text" rows="3" name="message" placeholder="I like to drink."></textarea>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label">I am drinking:</label>
-                    <div class="controls">
-                        <textarea id="what" class="input-text" rows="1" type="text" name="drink" placeholder="beer"></textarea>
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <p><button class="btn btn-primary btn-large button" id="toastButton">Toast!</button></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="toastBox">
-        </div>
-
-        <footer>
-             <p class="lead">A SuShi Production</p>
-        </footer>
-
+    <div id="toastBox">
     </div>
+{% end %}
 
-    <script src="../static/js/vendor/jquery-1.8.1.min.js"></script>
-    <script src="../static/js/vendor/jquery.timeago.js"></script>
-    <script src="../static/js/vendor/bootstrap.min.js"></script>
-    <script src="../static/js/ws.js"></script>
-    <script src="../static/js/time.js"></script>
-    <script src="../static/js/toast.js"></script>
-    <script src="../static/js/placeholder.js"></script>
-
-</body>
-</html>
+{% block scripts %}
+    <script src="{{ static_url('js/vendor/jquery.timeago.js') }}"></script>
+    <script src="{{ static_url('js/ws.js') }}"></script>
+    <script src="{{ static_url('js/time.js') }}"></script>
+    <script src="{{ static_url('js/toast.js') }}"></script>
+    <script src="{{ static_url('js/placeholder.js') }}"></script>
+{% end %}

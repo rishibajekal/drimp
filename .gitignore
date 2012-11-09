@@ -28,3 +28,5 @@ pip-log.txt
 
 #Redis dumps
 *.rdb
+
+.DS_Store
