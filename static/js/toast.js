@@ -1,6 +1,6 @@
 /**
 * sendToast
-*   - sends the information to the server via AJAX
+*       - sends the information to the server via AJAX
 */
 function sendToast(event) {
     var message = $('#why').val();
@@ -9,7 +9,7 @@ function sendToast(event) {
     var toast = '{"message": "' + message + '", "drink": "' + drink + '", "timestamp": "' + timestamp + '"}';
     if (message !== '' && drink !== ''){
         $.ajax({
-            url: location.protocol + '//' + location.host + '/toast',
+            url: location.protocol + '//' + location.host + '/api/toast',
             dataType: 'json',
             type: 'POST',
             data: toast

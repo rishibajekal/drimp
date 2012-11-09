@@ -1,11 +1,11 @@
 /**
 * ws
-* 	- handles the WebSocket portion of the application on the client side
+*   - handles the WebSocket portion of the application on the client side
 */
-ws = new WebSocket('ws://' + location.host + '/websocket');
+ws = new WebSocket('ws://' + location.host + '/api/websocket');
 
 ws.onopen = function() {
-    $.getJSON(location.protocol + '//' + location.host + '/toast', function(data) {
+    $.getJSON(location.protocol + '//' + location.host + '/api/toast', function(data) {
         $.each(data, function(key, value){
             displayToast(value.message, value.drink, value.timestamp);
         });

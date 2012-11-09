@@ -20,13 +20,16 @@ class Application(tornado.web.Application):
         self.db = conn['drimp']
 
         handlers = [
+            # Page Handlers
             tornado.web.URLSpec(r'/', IndexHandler),
             tornado.web.URLSpec(r'/index', IndexHandler),
             tornado.web.URLSpec(r'/about', AboutHandler),
             tornado.web.URLSpec(r'/contact', ContactHandler),
-            tornado.web.URLSpec(r'/toast', Toaster),
-            tornado.web.URLSpec(r'/toast/([0-9]*)', Toaster),
-            tornado.web.URLSpec(r'/websocket', WSHandler)
+
+            # API Handlers
+            tornado.web.URLSpec(r'/api/toast', Toaster),
+            tornado.web.URLSpec(r'/api/toast/([0-9]*)', Toaster),
+            tornado.web.URLSpec(r'/api/websocket', WSHandler)
         ]
 
         current_dir = os.path.dirname(__file__)
