@@ -19,6 +19,7 @@ $(document).ready(function(){
                 "Bailey's",
                 "Melted Butter.",
                 "beer."];
+    /* Choose a random what-why combination */
     var randindex =Math.floor(Math.random()*whylist.length);
     $('#why').attr("placeholder", whylist[randindex]);
     $('#what').attr("placeholder", whatlist[randindex]);

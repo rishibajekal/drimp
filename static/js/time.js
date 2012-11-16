@@ -1,6 +1,6 @@
 /**
 * time
-* 	- calculates the "timeago" for each toast periodically
+*   - calculates the "timeago" for each toast periodically
 */
 $(document).ready(function(){
     setInterval(function(){
