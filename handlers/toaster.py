@@ -12,8 +12,6 @@ class Toaster(RequestHandler):
 
         new_toast = self.request.body
         address = self.request.remote_ip
-        if address is None:
-            address = ""
         #address = '216.239.55.195'
         toast = json.loads(new_toast)
 
@@ -31,7 +29,10 @@ class Toaster(RequestHandler):
         message = toast['message']
         drink = toast['drink']
         timestamp = toast['timestamp']
-        location = record["city"]
+        if record is None:
+            location = ""
+        else:
+            location = record["city"]
 
         toast_dict = {"_id": id, "message": message, "drink": drink, "timestamp": timestamp, "location": location}
         db_toasts.insert({'_id': id, 'data': toast_dict})
