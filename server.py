@@ -1,5 +1,6 @@
 import os
 import sys
+from urlparse import urlparse
 import logging
 import tornado.httpserver
 import tornado.ioloop
@@ -12,6 +13,7 @@ from handlers.toaster import *
 from handlers.ws import *
 
 PORT = sys.argv[1]
+MONGO_URL = sys.argv[2]
 
 define("port", default=PORT, help="run on the given port", type=int)
 define("debug", default=False, help="run tornado in debug mode", type=bool)
@@ -20,8 +22,13 @@ define("debug", default=False, help="run tornado in debug mode", type=bool)
 class Application(tornado.web.Application):
     def __init__(self):
 
-        conn = pymongo.connection.Connection()
-        self.db = conn['drimp']
+        if MONGO_URL == "local":
+            conn = pymongo.connection.Connection()
+            self.db = conn['drimp']
+        else:
+            conn = pymongo.connection.Connection(MONGO_URL)
+            self.db = conn[urlparse(MONGO_URL).path[1:]]
+
         self.gic = pygeoip.GeoIP(os.path.abspath('static/data/GeoLiteCity.dat'))
 
         handlers = [
