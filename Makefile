@@ -1,7 +1,7 @@
 .PHONY: all init clean
 
 all: init
-	python server.py
+	python server.py 8888 --debug=True
 
 init:
 	pip install -r requirements.txt

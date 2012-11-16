@@ -5,24 +5,26 @@
         <li class="active"><a href="#">Home</a></li>
         <li><a href="about">About</a></li>
         <li><a href="contact">Contact</a></li>
-    </ul>            
+    </ul>
 {% end %}
-                
+
 {% block content %}
     <div class="hero-unit">
         <h1>Make a toast!</h1>
         <p>Share why you're drinking and what you're drinking!</p>
         <div class="form-horizontal" id="toastForm">
-            <div class="control-group">
+            <div id="why-group" class="control-group">
                 <label class="control-label">I am drinking because:</label>
                 <div class="controls">
                     <textarea id="why" class="input-text" rows="3" name="message" placeholder="I like to drink."></textarea>
+                    <span id="why-help" class="help-inline"></span>
                 </div>
             </div>
-            <div class="control-group">
+            <div id="what-group" class="control-group">
                 <label class="control-label">I am drinking:</label>
                 <div class="controls">
                     <textarea id="what" class="input-text" rows="1" type="text" name="drink" placeholder="beer"></textarea>
+                    <span id="what-help" class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">

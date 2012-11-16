@@ -1,16 +1,20 @@
 import os
+import sys
 import logging
 import tornado.httpserver
 import tornado.ioloop
 import tornado.web
 import pymongo
+import pygeoip
 from tornado.options import options, define
 from handlers.pages import *
 from handlers.toaster import *
 from handlers.ws import *
 
-define("port", default=8888, help="run on the given port", type=int)
-define("debug", default=True, help="run tornado in debug mode", type=bool)
+PORT = sys.argv[1]
+
+define("port", default=PORT, help="run on the given port", type=int)
+define("debug", default=False, help="run tornado in debug mode", type=bool)
 
 
 class Application(tornado.web.Application):
@@ -18,6 +22,7 @@ class Application(tornado.web.Application):
 
         conn = pymongo.connection.Connection()
         self.db = conn['drimp']
+        self.gic = pygeoip.GeoIP(os.path.abspath('static/data/GeoLiteCity.dat'))
 
         handlers = [
             # Page Handlers

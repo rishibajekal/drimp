@@ -2,16 +2,40 @@
 @import url('bootstrap-responsive.min.css');
 
 
-
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
 body {
-    background: url('../img/bg-edit1.png') no-repeat center center fixed; /* Url = 'http://fc05.deviantart.net/fs41/f/2009/054/c/a/__D_r_i_n_k_U_p___by_MoscaDeMantequilla.png'*/
+    background: url('../img/beer.png') no-repeat center center fixed; /* Url = 'http://fc05.deviantart.net/fs41/f/2009/054/c/a/__D_r_i_n_k_U_p___by_MoscaDeMantequilla.png'*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+}
+
+.hero-unit p {
+    font-size: 18px;
+    font-weight: 500;
+    color: inherit;
+}
+
+.hero-unit li {
+    font-size: 18px;
+    font-weight: 500;
+    color: inherit;
+}
+
+.hero-unit label {
+    font-size: 16px;
+    font-weight: 500;
+    color: inherit;
+}
+
+.well p {
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 30px;
+    color: inherit;
 }
 
 .input-text {
@@ -48,4 +72,13 @@ body {
     box-shadow: 0 0 5px rgba(81, 203, 238, 1);
     background: rgb(255,255,255); /* Fallback */
     background: rgba(255,255,255,1);
+}
+
+.mywell{
+    background-color: rgba(107, 27, 22, 0.9);
+}
+
+
+.big-text{
+    font-weight: 300;
 }
